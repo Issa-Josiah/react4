@@ -31,11 +31,12 @@
 - This takes us to the react and vite intro portal
 
 ***Class***
-When creating a React component, the component's name must start with an upper case letter.
 
-The component has to include the extends React.Component statement, this statement creates an inheritance to React.Component, and gives your component access to React.Component's functions.
+- When creating a React component, the component's name must start with an upper case letter.
 
-The component also requires a render() method, this method returns HTML.
+- The component has to include the extends React.Component statement, this statement creates an inheritance to React.Component, and gives your component access to React.Component's functions.
+
+- The component also requires a render() method, this method returns HTML.
 
             class Car extends React.Component {
             render() {
@@ -47,7 +48,7 @@ The component also requires a render() method, this method returns HTML.
             <Car />
             );
 
-If there is a constructor() function in your component, this function will be called when the component gets initiated.
+- If there is a constructor() function in your component, this function will be called when the component gets initiated.
 
                     class Car extends React.Component {
                     constructor() {
@@ -60,7 +61,7 @@ If there is a constructor() function in your component, this function will be ca
                     }
   
 
-  Another way of handling component properties is by using props.
+  - Another way of handling component properties is by using props.
 
                 class Car extends React.Component {
                 render() {
@@ -72,7 +73,7 @@ If there is a constructor() function in your component, this function will be ca
                 <Car color="red"/>
                 );
 
-If your component has a constructor function, the props should always be passed to the constructor and also to the React.Component via the super() method.
+- If your component has a constructor function, the props should always be passed to the constructor and also to the React.Component via the super() method.
 
                 ````
                 class Car extends React.Component {
@@ -89,9 +90,9 @@ If your component has a constructor function, the props should always be passed 
                 );
                 ````
 
-The state object is where you store property values that belongs to the component.
+- The state object is where you store property values that belongs to the component.
 
-~~~~
+```
 class Car extends React.Component {
   constructor(props) {
     super(props);
@@ -115,11 +116,11 @@ class Car extends React.Component {
     );
   }
 }
-~~~~
+```
 
-To change a value in the state object, use the this.setState() method.
+- To change a value in the state object, use the this.setState() method.
 
-````
+```
 class Car extends React.Component {
   constructor(props) {
     super(props);
@@ -150,12 +151,13 @@ class Car extends React.Component {
     );
   }
 }               
-````
+```
 
 *Lifecycle of Components*
-Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
 
-The three phases are: Mounting, Updating, and Unmounting.
+- Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
+
+- The three phases are: Mounting, Updating, and Unmounting.
 
 - Mounting
 Mounting means putting elements into the DOM.
@@ -163,14 +165,21 @@ Mounting means putting elements into the DOM.
 React has four built-in methods that gets called, in this order, when mounting a component:
 
 constructor() --> The constructor() method is called before anything else, when the component is initiated, and it is the natural place to set up the initial state and other initial values.
+
 getDerivedStateFromProps() --> The getDerivedStateFromProps() method is called right before rendering the element(s) in the DOM
+
 render() -->The render() method is required, and is the method that actually outputs the HTML to the DOM.
+
 componentDidMount() --> The componentDidMount() method is called after the component is rendered.
+
 shouldComponentUpdate --> In the shouldComponentUpdate() method you can return a Boolean value that specifies whether React should continue with the rendering or not.
+
 getSnapshotBeforeUpdate --> In the getSnapshotBeforeUpdate() method you have access to the props and state before the update, meaning that even after the update, you can check what the values were before the update.
 
 ****props****
-Props are arguments passed into React components
+
+- Props are arguments passed into React components
+
 ````
 import { createRoot } from 'react-dom/client'
 
@@ -186,7 +195,8 @@ createRoot(document.getElementById('root')).render(
 
 ````
 
-You can send as many properties as you want.
+- You can send as many properties as you want.
+
 ```
 import { createRoot } from 'react-dom/client'
 
@@ -202,6 +212,7 @@ createRoot(document.getElementById('root')).render(
 ```
 
 - React props can be of any data type, including variables, numbers, strings, objects, arrays, and more.
+
 ```
 import { createRoot } from 'react-dom/client'
 
@@ -215,6 +226,7 @@ createRoot(document.getElementById('root')).render(
   <Car year={1969} />
 );
 ```
+
 ```
 import { createRoot } from 'react-dom/client'
 
@@ -237,6 +249,7 @@ createRoot(document.getElementById('root')).render(
 ```
 
 - The component treats objects like objects, and you can use the dot notation to access the properties.
+
 ```
 import { createRoot } from 'react-dom/client'
 
@@ -263,6 +276,7 @@ createRoot(document.getElementById('root')).render(
 ```
 
 - Array props can be accessed using the indexes.
+
 ```
 import { createRoot } from 'react-dom/client'
 
@@ -281,6 +295,7 @@ createRoot(document.getElementById('root')).render(
 ```
 
 -Attributes are also how you pass data from one component to another, as parameters.    
+
 ```
 import { createRoot } from 'react-dom/client'
 
