@@ -294,7 +294,7 @@ createRoot(document.getElementById('root')).render(
 
 ```
 
--Attributes are also how you pass data from one component to another, as parameters.    
+- Attributes are also how you pass data from one component to another, as parameters.    
 
 ```
 import { createRoot } from 'react-dom/client'
@@ -316,6 +316,116 @@ function Garage() {
 
 createRoot(document.getElementById('root')).render(
   <Garage />
+);
+
+```
+
+**Destructing props**
+
+- You can limit the properties a component receives by using destructuring.
+
+```
+function Car({color}) {
+  return (
+    <h2>My car is {color}!</h2>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car brand="Ford" model="Mustang" color="red" year={1969} />
+);
+```
+
+-You can also destruct the properties you need inside the component.
+
+```
+function Car(props) {
+  const {brand, model} = props;
+  return (
+    <h2>I love my {brand} {model}!</h2>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car brand="Ford" model="Mustang" color="red" year={1969} />
+);
+
+```
+
+- When you don't know how many properties you will receive, you can use the ...rest operator.
+```
+function Car({color, brand, ...rest}) {
+  return (
+    <h2>My {brand} {rest.model} is {color}!</h2>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car brand="Ford" model="Mustang" color="red" year={1969} />
+  ```
+
+- With Destructuring, you can set default values for props. If a property has no value, the default value will be used.
+```
+function Car({color = "blue", brand}) {
+  return (
+    <h2>My {color} {brand}!</h2>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car brand="Ford" />
+);
+```
+
+**Prop Children**
+
+- You can send the content between the opening and closing tags of a component, to another component. This can be accessed in the other component using the props.children property.
+```
+Result Size: 620 x 689
+main.jsxindex.html 
+import { createRoot } from 'react-dom/client'
+
+function Son(props) {
+  return (
+    <div style={{background: 'lightgreen'}}>
+      <h2>Son</h2>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
+function Daughter(props) {
+  const {brand, model} = props;
+  return (
+    <div style={{background: 'lightblue'}}>
+      <h2>Daughter</h2>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
+function Parent() {
+  return (
+    <div>
+      <h1>My two Children</h1>
+      <Son>
+        <p>
+          This was written in the Parent component,
+          but displayed as a part of the Son component
+        </p>
+      </Son>
+      <Daughter>
+        <p>
+          This was written in the Parent component,
+          but displayed as a part of the Daughter component
+        </p>
+      </Daughter>
+    </div>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Parent />
 );
 
 ```
